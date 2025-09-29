@@ -1,0 +1,41 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isValidStory() {
+      let story = request.resource.data;
+      return story.size() >= 8 && // Check if all required fields are present
+             story.mainIdea is string &&
+             story.charNames is list &&
+             story.charDetails is list &&
+             story.setting is string &&
+             story.storyType is string &&
+             story.storyLength is string &&
+             story.prompt is string &&
+             story.generatedStory is string;
+    }
+    
+    function isValidDialogue() {
+      let dialogue = request.resource.data;
+      return dialogue.size() >= 7 && // Check if all required fields are present
+             dialogue.about is string &&
+             dialogue.charNames is list &&
+             dialogue.charDetails is list &&
+             dialogue.length is string &&
+             dialogue.creativity is string &&
+             dialogue.prompt is string &&
+             dialogue.generatedDialogue is string;
+    }
+
+    // Stories collection rules
+    match /stories/{storyId} {
+      allow read, write: if true;  // Allow all operations for testing
+    }
+
+    // Dialogues collection rules
+    match /dialogues/{dialogueId} {
+      allow read, write: if true;  // Allow all operations for testing
+    }
+  }
+} 
