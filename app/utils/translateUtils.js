@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI("AIzaSyCprjN2lJrgxliZJzYxMgBrriFvRi1Gx8E");
+const genAI = new GoogleGenerativeAI(process.env.EXPO_PUBLIC_GEMINI_API_KEY || '');
 
 export const translateText = async (text, targetLanguage) => {
   try {

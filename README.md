@@ -73,6 +73,12 @@ Optional for ElevenLabs TTS:
 - `EXPO_PUBLIC_ELEVEN_LABS_API_KEY`
 - `EXPO_PUBLIC_ELEVEN_LABS_VOICE_ID`
 
+Required for story generation and translation (Google Gemini):
+- `EXPO_PUBLIC_GEMINI_API_KEY`
+
+Optional for story illustrations (OpenAI DALL-E 3):
+- `EXPO_PUBLIC_OPENAI_API_KEY`
+
 ### Security & Sanitization Notes
 
 - Secrets have been removed and replaced with placeholders.
